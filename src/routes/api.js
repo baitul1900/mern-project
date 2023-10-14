@@ -4,7 +4,7 @@ const jwtAuthectication = require('../middlewares/jwtAuth')
 const router = express.Router();
 
 const { registration, login, profileDetails, profileUpdate, RecoverVerfiyEmail } = require('../controller/userController');
-const {createTask, deleteTask} = require("../controller/taskController")
+const {createTask, deleteTask, updateTask, listTaskByStatus} = require("../controller/taskController")
 
 router.post("/registration", registration);
 router.get("/login", login);
@@ -15,7 +15,9 @@ router.get('/RecoverVerfiyEmail/:email', RecoverVerfiyEmail)
 // manage the task
 
 router.post("/createTask", jwtAuthectication, createTask);
-router.get("/deleteTask/:id", deleteTask);
+router.get("/deleteTask/:id",jwtAuthectication, deleteTask);
+router.post("/updateTask/:id/:status", jwtAuthectication, updateTask);
+router.get("/listTaskByStatus/:status", jwtAuthectication, listTaskByStatus)
 
 
 
