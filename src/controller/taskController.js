@@ -12,7 +12,14 @@ exports.createTask = async (req,res) => {
 };
 
 
-
+exports.deleteTask = async (req, res) => {
+    try {
+        let id = req.params.id;
+        let query = {_id : id};
+        let rs = await taskModel.deleteOne(query);
+        res.json({status : "Delete Success", data : rs})
+    } catch (e) {rs.json({status : "Data not found", data : e.toString()})}
+};
 
 
 
