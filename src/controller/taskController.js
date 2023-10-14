@@ -47,3 +47,17 @@ exports.listTaskByStatus = async (req, res) => {
     } catch (e) { res.json({ status: " fail ", data: e.toString() }) }
     ;
 }
+
+exports.taskStatusCount = async (req,res)=>{
+    try {
+        let id=req.headers['id'];
+        let result= await TasksModel.aggregate([
+            {$match:{_id:email}},
+            {$group:{_id:"$status",sum:{$count:{}}}}
+        ])
+        res.status(200).json({status:"success",data:result})
+    }
+    catch (e) {
+        res.status(200).json({status:"fail",data:e})
+    }
+}
