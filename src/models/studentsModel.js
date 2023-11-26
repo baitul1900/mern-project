@@ -3,14 +3,45 @@ const mongoose = require("mongoose");
 const {Schema} = mongoose;
 
 const studentsData = new Schema({
-    email : {type: String, unique : true},
-    firstName : {type : String, trim : true},
-    lastName : {type : String, trim : true},
-    mobile : {type : String},
-    password : {type : String},
-    address : {type : String},
-    roll : {type : Number},
-    class : {type : String},
+    firstName: {
+        type: String,
+        
+      },
+      lastName: {
+        type: String,
+        
+      },
+      gender: {
+        type: String,
+        
+      },
+      dateOfBirth: {
+        type: String,
+        
+      },
+      nationality: {
+        type: String,
+        
+      },
+      address: {
+        type: String,
+        
+      },
+      email: {
+        type: String,
+  
+      },
+      phone: {
+        type: String,
+        
+      },
+      admissionDate: {
+        type: String,
+        
+      },
+      courses: {
+        type: String, // Assuming courses is an array of strings
+      },
 }, {timestamps : true, versionKey : false});
 
 const studentsModel = mongoose.model("students", studentsData);

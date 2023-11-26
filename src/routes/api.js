@@ -1,24 +1,12 @@
 const express = require("express");
-const jwtAuthectication = require('../middlewares/jwtAuth')
-
 const router = express.Router();
+const studentCont = require('../controller/studentController');
 
-const { studentsRegister, login, studentsDetails, updateStudents, deleteStudents } = require('../controller/StudentsController');
-const { } = require("../controller/WorksController")
-
-router.post("/studentsRegister", studentsRegister);
-router.get("/login", login);
-router.get('/studentsDetails', jwtAuthectication, studentsDetails);
-router.post('/updateStudents', jwtAuthectication, updateStudents);
-router.get('/deleteStudents/:id', jwtAuthectication, deleteStudents )
-// router.get('/RecoverVerfiyEmail/:email', RecoverVerfiyEmail)
-
-// // manage the task
-
-// router.post("/createTask", jwtAuthectication, createTask);
-// router.get("/deleteTask/:id",jwtAuthectication, deleteTask);
-// router.post("/updateTask/:id/:status", jwtAuthectication, updateTask);
-// router.get("/listTaskByStatus/:status", jwtAuthectication, listTaskByStatus)
+router.post('/reg-student', studentCont.createStudentRegistration);
+router.get('/delete-student/:id', studentCont.deleteStudent);
+router.post('/update-student/:id', studentCont.updateStudent);
+router.get('/all-student',studentCont.allRegistedStudent )
+router.get('/get-by-id/:id', studentCont.getById)
 
 
 
