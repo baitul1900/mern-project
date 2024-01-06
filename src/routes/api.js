@@ -1,12 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const studentCont = require('../controller/studentController');
+const totalRevenue = require('../controller/salesControoler');
 
-router.post('/reg-student', studentCont.createStudentRegistration);
-router.get('/delete-student/:id', studentCont.deleteStudent);
-router.post('/update-student/:id', studentCont.updateStudent);
-router.get('/all-student',studentCont.allRegistedStudent )
-router.get('/get-by-id/:id', studentCont.getById)
+router.get('/total-revenue',totalRevenue.totalRevenue);
+router.get('/quantity-by-product',totalRevenue.productByQuantity);
+
+
 
 
 
